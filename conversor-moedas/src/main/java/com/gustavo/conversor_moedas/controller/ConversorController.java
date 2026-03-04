@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gustavo.conversor_moedas.model.Cotacao;
 import com.gustavo.conversor_moedas.service.ConversorService;
 
 @RestController
@@ -15,7 +16,7 @@ public class ConversorController {
     private ConversorService conversorService;
 
     @GetMapping("/{moeda}")
-    public String obterCotacao(@PathVariable String moeda) {
+    public Cotacao obterCotacao(@PathVariable String moeda) {
         return conversorService.obterCotacao(moeda);
     }
 }
