@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Cotacao {
     @JsonProperty("ask")
     private String valor;
+    private double valorConvertido;
 
     public String getValor() {
         return valor;
@@ -13,5 +14,13 @@ public class Cotacao {
 
     public void setValor(String valor) {
         this.valor = valor;
+    }
+
+    public double getValorConvertido() {
+        return valorConvertido;
+    }
+
+    public void setValorConvertido(double valorConvertido) {
+        this.valorConvertido = valorConvertido;
     }
 }

@@ -12,7 +12,7 @@ import tools.jackson.databind.ObjectMapper;
 public class ConversorService {
     private String apiUrl = "https://economia.awesomeapi.com.br/json/last/";
 
-    public Cotacao obterCotacao(String moeda) {
+    public Cotacao obterCotacao(String moeda, double valor) {
         RestTemplate restTemplate = new RestTemplate();
         String url = apiUrl + moeda + "-BRL";
         try {
@@ -23,9 +23,14 @@ public class ConversorService {
             JsonNode node = mapper.readTree(resposta);
 
             String valorEncontrado = node.get(chaveMoeda).get("ask").asText();
+            //Converte o valorEncontrado para double
+            double valorEncontradoDouble = Double.parseDouble(valorEncontrado);
+            
+            double resultadoConvertido = valor * valorEncontradoDouble;
 
             Cotacao minhaCotacao = new Cotacao();
             minhaCotacao.setValor(valorEncontrado);
+            minhaCotacao.setValorConvertido(resultadoConvertido);
 
             return minhaCotacao;
         } catch (Exception e) {
