@@ -28,6 +28,8 @@ public class ConversorService {
             
             double resultadoConvertido = valor * valorEncontradoDouble;
 
+            resultadoConvertido = Math.round(resultadoConvertido * 100.0) / 100.0;
+
             Cotacao minhaCotacao = new Cotacao();
             minhaCotacao.setValor(valorEncontrado);
             minhaCotacao.setValorConvertido(resultadoConvertido);
